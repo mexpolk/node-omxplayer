@@ -1,147 +1,161 @@
 declare var Omx: NodeOmxPlayerStatic;
 
-declare module 'node-omxplayer' {
-	export = Omx;
+declare module "node-omxplayer" {
+    export = Omx;
 }
 
 interface NodeOmxPlayerStatic {
-	/**
+    /**
 	 * The constructor method, used to launch omxplayer with a source.
 	 * @param source (optional): The playback source, any audio or video file (or stream) that omxplayer is capable of playing. If left blank, the player will initialise and wait for a source to be added later with the newSource method.
 	 * @param output (optional): The audio output, if left blank will default to 'local', can be one of: "local", "hdmi", "both"
 	 * @param loop (optional): Loop state, if set to true, will loop file if it is seekable. If left blank will default to false.
 	 * @param initialVolume (optional): The initial volume, omxplayer will start with this value (in millibels). If left blank will default to 0.
+	 * @param showOsd (optional): Display status information on screen.
+	 * @param window (optional): Set position of video window.
 	 */
-	(source?: String, output?: String, loop?: Boolean, initialVolume?: Number, showOsd?: Boolean): NodeOmxPlayer;
+    (
+        source?: String,
+        output?: String,
+        loop?: Boolean,
+        initialVolume?: Number,
+        showOsd?: Boolean,
+        window?: String
+    ): NodeOmxPlayer;
 }
 
 interface NodeOmxPlayer extends Event {
-	/**
+    /**
 	 * Starts playback of a new source, the arguments are identical to those of the Omx constructor method described above. If a file is currently playing, ends this playback and begins the new source.
 	 * @param source (optional): The playback source, any audio or video file (or stream) that omxplayer is capable of playing. If left blank, the player will initialise and wait for a source to be added later with the newSource method.
 	 * @param output (optional): The audio output, if left blank will default to 'local', can be one of: "local", "hdmi", "both"
 	 * @param loop (optional): Loop state, if set to true, will loop file if it is seekable. If left blank will default to false.
 	 * @param initialVolume (optional): The initial volume, omxplayer will start with this value (in millibels). If left blank will default to 0.
 	 */
-	newSource(source: String, output?: String, loop?: Boolean, initialVolume?: Number): void;
+    newSource(
+        source: String,
+        output?: String,
+        loop?: Boolean,
+        initialVolume?: Number
+    ): void;
 
-	/**
+    /**
 	 * Resumes playback.
 	 */
-	play(): void;
+    play(): void;
 
-	/**
+    /**
 	 * Pauses playback.
 	 */
-	pause(): void;
+    pause(): void;
 
-	/** 
+    /** 
 	 * Increases the volume.
 	 */
-	volUp(): void;
+    volUp(): void;
 
-	/**
+    /**
 	 * Decreases the volume.
 	 */
-	volDown(): void;
+    volDown(): void;
 
-	/**
+    /**
 	 * Fast forwards playback.
 	 */
-	fastFwd(): void;
+    fastFwd(): void;
 
-	/**
+    /**
 	 * Rewinds playback.
 	 */
-	rewind(): void;
+    rewind(): void;
 
-	/**
+    /**
 	 * Skips playback forward by 30 seconds.
 	 */
-	fwd30(): void;
+    fwd30(): void;
 
-	/**
+    /**
 	 * Skips playback backward by 30 seconds.
 	 */
-	back30(): void;
+    back30(): void;
 
-	/**
+    /**
 	 * Skips playback forward by 600 seconds.
 	 */
-	fwd600(): void;
+    fwd600(): void;
 
-	/**
+    /**
 	 * Skips playback backward by 600 seconds.
 	 */
-	back600(): void;
+    back600(): void;
 
-	/**
+    /**
 	 * Quits the player.
 	 */
-	quit(): void;
+    quit(): void;
 
-	/**
+    /**
 	 * Toggle subtitles.
 	 */
-	subtitles(): void;
+    subtitles(): void;
 
-	/**
+    /**
 	 * Provides info on the currently playing file.
 	 */
-	info(): void;
+    info(): void;
 
-	/**
+    /**
 	 * Increases playback speed.
 	 */
-	incSpeed(): void;
+    incSpeed(): void;
 
-	/**
+    /**
 	 * Decreases playback speed.
 	 */
-	decSpeed(): void;
+    decSpeed(): void;
 
-	/**
+    /**
 	 * Skips to previous chapter.
 	 */
-	prevChapter(): void;
+    prevChapter(): void;
 
-	/**
+    /**
 	 * Skips to next chapter.
 	 */
-	nextChapter(): void;
+    nextChapter(): void;
 
-	/**
+    /**
 	 * Skips to previous audio stream.
 	 */
-	prevAudio(): void;
+    prevAudio(): void;
 
-	/**
+    /**
 	 * Skips to next audio stream.
 	 */
-	nextAudio(): void;
+    nextAudio(): void;
 
-	/**
+    /**
 	 * Skips to previous subtitle stream.
 	 */
-	prevSubtitle(): void;
+    prevSubtitle(): void;
 
-	/**
+    /**
 	 * Skips to next subtitle stream.
 	 */
-	nextSubtitle(): void;
+    nextSubtitle(): void;
 
-	/**
+    /**
 	 * Decrease subtitle delay by 250ms.
 	 */
-	decSubDelay(): void;
+    decSubDelay(): void;
 
-	/**
+    /**
 	 * Increase subtitle delay by 250ms.
 	 */
-	incSubDelay(): void;
+    incSubDelay(): void;
 
-	/**
+    /**
 	 * Boolean giving the playback status, true if the player is still active, false if it has ended or the player has quit.
 	 */
-	running: Boolean;
+    running: Boolean;
 }
